@@ -1,0 +1,57 @@
+#!/bin/bash
+echo 'gfc: does a git commit 1 day in the future'
+echo 'tf: terraform'
+echo 'p: pulumi'
+echo 'k: kubectl'
+echo 'm: minikube'
+echo 'n: nordvpn'
+echo 'please: redo of last command with sudo'
+echo 'teamskill: kills all teams'
+echo 'chromekill: kills all chrome'
+echo 'gitident: sets git repo with identity'
+echo 'getISP: gets public ISP'
+echo 'joke: gets random dad joke'
+echo 'wtr: gets weather for current IP'
+echo 'slides: runs docker in current directory for slideware'
+echo 'og: runs og platform docker'
+echo 'changemac: changes mac address'
+
+alias gfc='git commit --date "$(date -v +1d)"'
+alias tf='terraform'
+alias p='pulumi'
+alias k='kubectl'
+alias m='minikube'
+alias n='nordvpn'
+alias please='sudo $(fc -ln -1)'
+
+# Kill all the tabs in Chrome to free up memory
+# [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
+alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+alias teamskill="ps ux | grep 'teams' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+
+# Lock the screen (when going AFK)
+#alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Java shenanigans
+#alias j1.8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
+#alias j14="export JAVA_HOME=`/usr/libexec/java_home -v 14`; java -version"
+#alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
+#alias j15="export JAVA_HOME=`/usr/libexec/java_home -v 15`; java -version"
+
+# Git Set env
+alias gitident="git config user.email $gitaddress && git config user.name $gitname"
+
+#Gets current external IP and ISP info for connection
+alias getISP="curl -s ipinfo.io/$(curl -s https://api.myip.com | jq -r '.ip')"
+
+#Gets a dad joke
+alias joke="curl -s -H \"Accept: application/json\" https://icanhazdadjoke.com/ | jq -r '.joke'"
+
+#Gets weather for IP connection
+alias wtr="curl https://wttr.in/"
+
+# Change MAC address
+alias changemac="sudo ifconfig $1 ether $(openssl rand -hex 6 | sed 's/\(..\)\(..\)\(..\)\(..\)\(..\)\(..\)/\1:\2:\3:\4:\5:\6/')"
+alias slides='docker run -it -p 8080:8080 -v $(pwd)/slides:/app/slides msoedov/hacker-slides'
+alias og='docker run -v $(pwd):/host -v ~/.aws:/root/.aws -v ~/.kube:/root/.kube -v ~/.azure:/root/.azure -it ahplummer/og_platform_eng:latest /bin/zsh'
+alias ct='docker run -v $HOME/data/cointop:/config/cointop -it cointop/cointop'
