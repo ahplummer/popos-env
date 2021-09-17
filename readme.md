@@ -31,6 +31,7 @@ echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 export gitname=<your name>
 export gitaddress=<your email address>
 source ~/<cloned-dir>/aliases
+source ~/<cloned-dir>/functions
 ```
 
 * Restart shell.
