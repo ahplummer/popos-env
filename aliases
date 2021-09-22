@@ -16,6 +16,14 @@ echo 'slides: runs docker in current directory for slideware'
 echo 'og: runs og platform docker'
 echo 'changemac: changes mac address'
 
+#
+echo 'goland: starts goland'
+alias goland='/opt/GoLand-2021.2.3/bin/goland.sh &> /dev/null &'
+echo 'datagrip: starts datagrip'
+alias datagrip='/opt/DataGrip-2021.2.2/bin/datagrip.sh &> /dev/null &'
+echo 'pycharm: starts pycharm'
+alias pycharm='/opt/pycharm-2021.2.2/bin/pycharm.sh &> /dev/null &'
+
 alias gfc='git commit --date "$(date -v +1d)"'
 alias tf='terraform'
 alias p='pulumi'
