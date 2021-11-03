@@ -15,7 +15,10 @@ echo 'wtr: gets weather for current IP'
 echo 'slides: runs docker in current directory for slideware'
 echo 'og: runs og platform docker'
 echo 'changemac: changes mac address'
-
+echo 'pbcopy: puts things on clipboard'
+alias pbcopy='xclip -selection clipboard'
+echo 'pbpaste: pulls from clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 #
 echo 'goland: starts goland'
 alias goland='/opt/GoLand-2021.2.3/bin/goland.sh &> /dev/null &'
